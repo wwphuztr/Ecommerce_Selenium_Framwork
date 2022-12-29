@@ -1,0 +1,8 @@
+user,pwd,exp
+admin@yourstore.com,admin,Valid
+admin@yourskjnkjntore.com,adm,Invalid
+ajkndm@yourstnore.nkjcom,admin,Invalid
+adm@nnyoursnjktore.conjkm,admin,Invalid
+akjndm@yourstore.com,admin,Invalid
+adm@yourstore.com,57364@34,Invalid
+adm@yourstore.com,903485%^^&&^()*,Invalid
