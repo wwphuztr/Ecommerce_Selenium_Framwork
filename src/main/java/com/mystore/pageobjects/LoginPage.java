@@ -32,7 +32,6 @@ public class LoginPage extends BaseClass {
         action.type(username, user);
         action.type(password, pass);
         action.click(driver, signInBtn);
-
         return new HomePage();
     }
 }

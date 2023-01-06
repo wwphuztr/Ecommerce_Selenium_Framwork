@@ -1,22 +1,20 @@
 package com.mystore.testcases;
 
-import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 import com.mystore.pageobjects.AddToCartPage;
+import com.mystore.pageobjects.CartPage;
 import com.mystore.pageobjects.IndexPage;
 import com.mystore.pageobjects.SearchResultPage;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AddToCartPageTest extends BaseClass {
-    IndexPage index;
-    SearchResultPage searchResultPage;
+public class CartPageTest extends BaseClass {
+    IndexPage indexPage;
     AddToCartPage addToCartPage;
-    Action action;
+    SearchResultPage searchResultPage;
+    CartPage cartPage;
 
     @BeforeMethod
     public void setup() {
@@ -24,21 +22,23 @@ public class AddToCartPageTest extends BaseClass {
     }
 
     @Test
-    public void addToCartTest() throws InterruptedException {
-        index = new IndexPage();
+    public void verifyTotalPrice() throws InterruptedException {
+        indexPage = new IndexPage();
         addToCartPage = new AddToCartPage();
-        searchResultPage = index.searchProduct("pant");
+        searchResultPage = indexPage.searchProduct("pant");
         addToCartPage = searchResultPage.clickOnProduct();
-        addToCartPage.enterQuantity(1);
+        int quantity = 1;
+        addToCartPage.enterQuantity(quantity);
         addToCartPage.clickOnAddToCart();
         boolean result = addToCartPage.validateAddToCart();
-        //boolean result = addToCartPage.validateAddToCart2();
+        addToCartPage.clickonCart();
         Assert.assertTrue(result);
-        Thread.sleep(3000);
+        Thread.sleep(30000);
     }
 
     @AfterMethod
     public void teardown() {
         driver.quit();
     }
+
 }

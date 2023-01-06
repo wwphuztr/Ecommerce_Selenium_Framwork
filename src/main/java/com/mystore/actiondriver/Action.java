@@ -4,7 +4,12 @@ import com.mystore.base.BaseClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Action extends BaseClass {
@@ -86,5 +91,25 @@ public class Action extends BaseClass {
             }
         }
         return flag;
+    }
+
+    public boolean visibilityOf(WebDriver driver, WebElement element, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        boolean result = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+        return result;
+    }
+
+    public void fluentwait(WebDriver driver, WebElement element, int timeOut) {
+        Wait<WebDriver> wait = null;
+        try {
+            wait = new FluentWait<WebDriver>((WebDriver) driver)
+                    .withTimeout(Duration.ofSeconds(20))
+                    .pollingEvery(Duration.ofSeconds(2))
+                    .ignoring(Exception.class);
+            wait.until(ExpectedConditions.visibilityOf(element));
+            element.click();
+        } catch (Exception e) {
+
+        }
     }
 }

@@ -30,8 +30,7 @@ public class SearchResultPage extends BaseClass {
 
     public AddToCartPage clickOnProduct() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[contains(@alt,'Boody Mens Crew Neck TShirt M White 1ea')]"))).click();
-        //action.click(driver, firstProduct);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body/main[@id='mainContent']/div[contains(@class,'container')]/div[contains(@class,'searchResultsPage-content')]/div[@id='myTabContent']/div[@id='productsTab']/div[contains(@class,'productListing')]/div[contains(@class,'row')]/div[contains(@class,'col-md-9 order-1 order-md-2')]/div[contains(@class,'product-list row')]/div[1]"))).click();
         Thread.sleep(10000);
         return new AddToCartPage();
     }
