@@ -28,10 +28,12 @@ public class LoginPage extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage Login(String user, String pass) {
+    // handling this issues https://stackoverflow.com/questions/12569833/generic-methods-returning-dynamic-object-types
+    public <T> T Login(String user, String pass) {
+        Object page = new Object();
         action.type(username, user);
         action.type(password, pass);
         action.click(driver, signInBtn);
-        return new HomePage();
+        return (T) page;
     }
 }

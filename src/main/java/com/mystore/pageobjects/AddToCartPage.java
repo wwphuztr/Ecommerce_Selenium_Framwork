@@ -23,8 +23,23 @@ public class AddToCartPage extends BaseClass {
     @FindBy(xpath = "//div[@class='notifications-cartCount']")
     WebElement cart;
 
+    @FindBy(xpath = "//div[@class='quantityInput mt-4']//input[@value='1']")
+    WebElement actualQuantity;
+
     public AddToCartPage() {
         PageFactory.initElements(driver, this);
+    }
+
+    public int checkActualQuantityAfterClick() {
+        int quantity;
+        if (actualQuantity.getAttribute("data-prev") == null) {
+            quantity = 1;
+        } else {
+            String quantityString;
+            quantityString = actualQuantity.getAttribute("data-prev");
+            quantity = Integer.parseInt(quantityString);
+        }
+        return quantity;
     }
 
     public void enterQuantity(int q) {
@@ -33,7 +48,7 @@ public class AddToCartPage extends BaseClass {
                 action.click(driver, plusButton);
             }
             catch (Exception e) {
-                System.out.println("Out of stock !!");
+                System.out.println("(AddToCart) Out of stock !!");
             }
         }
     }

@@ -28,16 +28,11 @@ public class dataProvider {
 
         WebDriver driver = new ChromeDriver(opt);
 
-        driver.get("https://www.lifepharmacy.co.nz/cart");
+        driver.get("https://www.lifepharmacy.co.nz/cart/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-
-        System.out.println(driver.findElement(By.xpath("//span[@class='title-mobile']")).getText());
-        System.out.println(driver.findElement(By.xpath("//div[@class='txt-value pl-2 cartShippingAndHandling']")).getText());
-        System.out.println(driver.findElement(By.xpath("//div[@class='txt-value pl-2 cartTotal']")).getText());
-
-
+        driver.findElement(By.xpath("//button[@type='submit'][normalize-space()='Checkout']")).click();
 
         System.out.println("Pass");
         Thread.sleep(20000);

@@ -79,15 +79,15 @@ public class Action extends BaseClass {
             flag = true;
         }
         catch (Exception e) {
-            System.out.println("Location not found");
+            System.out.println("(Type) Location not found");
             flag = false;
         }
         finally {
             if (flag) {
-                System.out.println("Successfully entered value");
+                System.out.println("(Type) Successfully entered value");
             }
             else {
-                System.out.println("Unable to enter value");
+                System.out.println("(Type) Unable to enter value");
             }
         }
         return flag;
