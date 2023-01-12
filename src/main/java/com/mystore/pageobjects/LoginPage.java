@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BaseClass {
+public class LoginPage<T> extends BaseClass {
     Action action = new Action();
 
     @FindBy(xpath = "//img[@src='\\Static\\assets\\images\\header\\sign-in.svg']")
@@ -18,7 +18,7 @@ public class LoginPage extends BaseClass {
     @FindBy(xpath = "//input[@id='password']")
     WebElement password;
 
-    @FindBy(xpath = "//button[@id='loginButton']")
+    @FindBy(xpath = "//button[contains(normalize-space(), \"Sign in\") and @type='submit']")
     WebElement signInBtn;
 
     @FindBy(xpath = "//a[normalize-space()='Create One Now']")
@@ -28,12 +28,10 @@ public class LoginPage extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    // handling this issues https://stackoverflow.com/questions/12569833/generic-methods-returning-dynamic-object-types
-    public <T> T Login(String user, String pass) {
-        Object page = new Object();
+    public <T> T Login(String user, String pass, Class<T> page) throws InstantiationException, IllegalAccessException {
         action.type(username, user);
         action.type(password, pass);
         action.click(driver, signInBtn);
-        return (T) page;
+        return page.newInstance();
     }
 }

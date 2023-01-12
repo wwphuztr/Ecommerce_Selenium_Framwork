@@ -20,10 +20,10 @@ public class LoginPageTest extends BaseClass {
     }
 
     @Test
-    public void loginTest() {
+    public void loginTest() throws InstantiationException, IllegalAccessException {
         indexPage = new IndexPage();
         loginPage = indexPage.clickOnSignIn();
-        homePage = loginPage.Login(prop.getProperty("username"), prop.getProperty("password"));
+        homePage = (HomePage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), HomePage.class);
         String actualURL = homePage.getCurrentURL();
         String expectedURL = "https://www.lifepharmacy.co.nz/";
         Assert.assertEquals(actualURL, expectedURL);

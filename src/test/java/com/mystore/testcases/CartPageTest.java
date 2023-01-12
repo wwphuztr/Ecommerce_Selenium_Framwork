@@ -28,9 +28,9 @@ public class CartPageTest extends BaseClass {
         indexPage = new IndexPage();
         addToCartPage = new AddToCartPage();
         //searchResultPage = indexPage.searchProduct("pant");
-        searchResultPage = indexPage.searchProduct("lip");
+        searchResultPage = indexPage.searchProduct("dress");
         addToCartPage = searchResultPage.clickOnProduct();
-        int quantity = 20;
+        int quantity = 2;
         int quantityExpected = quantity;
         // because we have one available quantity on each product we choose
         quantity = quantity - 1;
@@ -40,7 +40,7 @@ public class CartPageTest extends BaseClass {
         // Handle whether the quantity is equal to actual quantity after adding the product
         int actualQuantity = addToCartPage.checkActualQuantityAfterClick();
         //check whether the actual quantity and expected quantity is equal or not
-        Assert.assertEquals(actualQuantity, quantityExpected, "The actual quantity is not equal with expected quantity");
+        Assert.assertEquals(actualQuantity, quantityExpected, "The actual quantity is not equal with expected quantity expected quantity");
         cartPage = addToCartPage.clickonCart();
         //get unit, shipping and total price
         Double unitPrice = cartPage.getUnitPrice();

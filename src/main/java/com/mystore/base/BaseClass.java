@@ -53,7 +53,7 @@ public class BaseClass {
         }
 
         Action.impliciWait(driver, 10);
-        Action.pageLoadTimeOut(driver, 30);
+        Action.pageLoadTimeOut(driver, 50);
         driver.manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(1440, 900));
         driver.get(prop.getProperty("url"));
