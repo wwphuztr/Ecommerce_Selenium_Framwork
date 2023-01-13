@@ -12,7 +12,7 @@ public class EndToEndTest extends BaseClass {
     SearchResultPage searchResultPage;
     CartPage cartPage;
     CheckOutPage checkOutPage;
-    LoginPage loginPage;
+    LoginPage loginPage = new LoginPage();
     HomePage homePage;
 
     @BeforeMethod
@@ -37,7 +37,7 @@ public class EndToEndTest extends BaseClass {
         cartPage = addToCartPage.clickonCart();
         checkOutPage = cartPage.clickonCheckout();
         //check the customer is a guest or logged in
-        //checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
+        Thread.sleep(20000);
         checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
 
 //        if (checkOutPage.CheckisAGuestOrLogged()) {

@@ -20,7 +20,7 @@ public class LoginPageTest extends BaseClass {
     }
 
     @Test
-    public void loginTest() throws InstantiationException, IllegalAccessException {
+    public void loginTest() throws InstantiationException, IllegalAccessException, InterruptedException {
         indexPage = new IndexPage();
         loginPage = indexPage.clickOnSignIn();
         homePage = (HomePage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), HomePage.class);

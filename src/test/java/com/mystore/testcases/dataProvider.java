@@ -28,11 +28,12 @@ public class dataProvider {
 
         WebDriver driver = new ChromeDriver(opt);
 
-        driver.get("https://www.lifepharmacy.co.nz/cart/");
+        driver.get("https://www.lifepharmacy.co.nz/cart/checkout-sign-in/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.findElement(By.xpath("//button[@type='submit'][normalize-space()='Checkout']")).click();
+        Boolean tr = driver.findElement(By.xpath("//input[@id='username']")).isDisplayed();
+        System.out.println(tr);
 
         System.out.println("Pass");
         Thread.sleep(20000);

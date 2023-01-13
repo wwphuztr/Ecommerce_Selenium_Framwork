@@ -2,11 +2,12 @@ package com.mystore.pageobjects;
 
 import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage<T> extends BaseClass {
+public class LoginPage extends BaseClass {
     Action action = new Action();
 
     @FindBy(xpath = "//img[@src='\\Static\\assets\\images\\header\\sign-in.svg']")
@@ -28,10 +29,16 @@ public class LoginPage<T> extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    public <T> T Login(String user, String pass, Class<T> page) throws InstantiationException, IllegalAccessException {
+    public <T> T Login(String user, String pass, Class<T> page) throws InstantiationException, IllegalAccessException, InterruptedException {
         action.type(username, user);
         action.type(password, pass);
         action.click(driver, signInBtn);
+
+//        driver.findElement(By.xpath("//input[@id='username']")).isDisplayed();
+//        driver.findElement(By.xpath("//input[@id='password']")).isDisplayed();
+//        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("laura@particularaudience.com");
+//        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("12345678aA@");
+//        driver.findElement(By.xpath("//button[contains(normalize-space(), \"Sign in\") and @type='submit']")).click();
         return page.newInstance();
     }
 }
