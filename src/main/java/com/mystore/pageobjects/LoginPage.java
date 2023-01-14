@@ -33,12 +33,6 @@ public class LoginPage extends BaseClass {
         action.type(username, user);
         action.type(password, pass);
         action.click(driver, signInBtn);
-
-//        driver.findElement(By.xpath("//input[@id='username']")).isDisplayed();
-//        driver.findElement(By.xpath("//input[@id='password']")).isDisplayed();
-//        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("laura@particularaudience.com");
-//        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("12345678aA@");
-//        driver.findElement(By.xpath("//button[contains(normalize-space(), \"Sign in\") and @type='submit']")).click();
         return page.newInstance();
     }
 }

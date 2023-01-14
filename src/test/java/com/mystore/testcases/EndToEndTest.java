@@ -12,7 +12,7 @@ public class EndToEndTest extends BaseClass {
     SearchResultPage searchResultPage;
     CartPage cartPage;
     CheckOutPage checkOutPage;
-    LoginPage loginPage = new LoginPage();
+    LoginPage loginPage;
     HomePage homePage;
 
     @BeforeMethod
@@ -26,27 +26,26 @@ public class EndToEndTest extends BaseClass {
         addToCartPage = new AddToCartPage();
         searchResultPage = indexPage.searchProduct("dress");
         addToCartPage = searchResultPage.clickOnProduct();
+
         int quantity = 2;
         int quantityExpected = quantity;
-        // because we have one available quantity on each product we choose
-        quantity = quantity - 1;
+        quantity = quantity - 1; // because we have one available quantity on each product we choose
 
         addToCartPage.enterQuantity(quantity);
         addToCartPage.clickOnAddToCart();
         boolean result = addToCartPage.validateAddToCart();
         cartPage = addToCartPage.clickonCart();
         checkOutPage = cartPage.clickonCheckout();
-        //check the customer is a guest or logged in
-        Thread.sleep(20000);
-        checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
 
-//        if (checkOutPage.CheckisAGuestOrLogged()) {
-//            System.out.println("Logged");
-//        }
-//        else  {
-//            System.out.println("Guest");
-//            checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
-//        }
+        //check the customer is a guest or logged in
+        loginPage = new LoginPage();
+        if (checkOutPage.CheckisAGuestOrLogged()) {
+            System.out.println("Logged");
+        }
+        else  {
+            System.out.println("Guest");
+            checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
+        }
 
         Thread.sleep(30000);
     }

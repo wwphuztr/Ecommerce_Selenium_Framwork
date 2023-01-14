@@ -22,8 +22,6 @@ public class IndexPage extends BaseClass {
     @FindBy(xpath = "//a[contains(normalize-space(), 'result')]")
     WebElement resultButton;
 
-
-
     @FindBy(xpath = "//div[@class='modal-header']//span[@class='icon-close']")
     WebElement x_button;
 
