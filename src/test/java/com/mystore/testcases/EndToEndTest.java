@@ -2,6 +2,7 @@ package com.mystore.testcases;
 
 import com.mystore.base.BaseClass;
 import com.mystore.pageobjects.*;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -46,8 +47,17 @@ public class EndToEndTest extends BaseClass {
             System.out.println("Guest");
             checkOutPage = (CheckOutPage) loginPage.Login(prop.getProperty("username"), prop.getProperty("password"), CheckOutPage.class);
         }
+        checkOutPage.clickNext(); // Move to DELIVERY DETAILS
+        Thread.sleep(3000);
+        checkOutPage.clickNext(); // Move to PAYMENT
+        Thread.sleep(1000);
+        checkOutPage.clickIAmNotRobot();
+        Thread.sleep(3000);
+        checkOutPage.clickNext(); // Move to CONFIRMATION
+        Thread.sleep(3000);
 
-        Thread.sleep(30000);
+        //Confirmation when we move to method payment page
+        Assert.assertEquals(driver.getTitle(), "Paymark Web Payments", "Complete the END TO END Testing");
     }
 
     @AfterMethod

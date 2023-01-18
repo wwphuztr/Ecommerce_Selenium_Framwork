@@ -28,12 +28,17 @@ public class dataProvider {
 
         WebDriver driver = new ChromeDriver(opt);
 
-        driver.get("https://www.lifepharmacy.co.nz/cart/checkout-sign-in/");
+        driver.get("https://www.lifepharmacy.co.nz/cart/checkout-payment-details/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Thread.sleep(4000);
 
-        Boolean tr = driver.findElement(By.xpath("//input[@id='username']")).isDisplayed();
-        System.out.println(tr);
+        driver.switchTo().frame(driver.findElement(By.xpath("*//iframe[@title='reCAPTCHA']")));
+        driver.findElement(By.xpath("//*[@id=\"recaptcha-anchor\"]")).click();
+        Thread.sleep(2000);
+        driver.switchTo().defaultContent();
+        driver.findElement(By.xpath("//button[normalize-space()='Next']")).click();
+        System.out.println(driver.getTitle());
 
         System.out.println("Pass");
         Thread.sleep(20000);
