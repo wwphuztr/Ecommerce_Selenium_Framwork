@@ -23,6 +23,7 @@ public class Action extends BaseClass {
 
     public void click(WebDriver webDriver, WebElement webElement) {
         webElement.click();
+        System.out.println("(click) Click successfully");
     }
 
     public void enter(WebDriver webDriver, WebElement element) {
