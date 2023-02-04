@@ -37,7 +37,6 @@ public class EndToEndTest extends BaseClass {
         boolean result = addToCartPage.validateAddToCart();
         cartPage = addToCartPage.clickonCart();
         checkOutPage = cartPage.clickonCheckout();
-
         //check the customer is a guest or logged in
         loginPage = new LoginPage();
         if (checkOutPage.CheckisAGuestOrLogged()) {
@@ -52,7 +51,7 @@ public class EndToEndTest extends BaseClass {
         checkOutPage.clickNext(); // Move to PAYMENT
         Thread.sleep(1000);
         checkOutPage.clickIAmNotRobot();
-        Thread.sleep(3000);
+        Thread.sleep(10000);
         checkOutPage.clickNext(); // Move to CONFIRMATION
         Thread.sleep(3000);
 

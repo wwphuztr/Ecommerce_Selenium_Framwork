@@ -27,6 +27,9 @@ public class CartPage extends BaseClass {
 
 
     public CheckOutPage clickonCheckout() {
+        action.visibilityOf(driver, checkoutButton, 10);
+        System.out.println("Test CHECK OUT button");
+        action.isDisplayed(driver, checkoutButton);
         action.click(driver, checkoutButton);
         return new CheckOutPage();
     }

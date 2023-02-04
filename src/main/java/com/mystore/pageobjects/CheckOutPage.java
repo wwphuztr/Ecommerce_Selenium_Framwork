@@ -26,7 +26,14 @@ public class CheckOutPage extends BaseClass {
 
     public void clickIAmNotRobot() throws InterruptedException {
         driver.switchTo().frame(driver.findElement(By.xpath("*//iframe[@title='reCAPTCHA']")));
+        System.out.println("Test is display for iAmNotRobot");
+        System.out.println("--------------------------------");
+        action.isDisplayed(driver, iAmNotRobot);
+        System.out.println("--------------------------------");
+
         action.click(driver, iAmNotRobot);
+        System.out.println("--------------------------------");
+
         driver.switchTo().defaultContent();
         if(action.isDisplayed(driver, capChaImage)) {
             Thread.sleep(20000);
