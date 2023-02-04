@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
@@ -17,8 +18,16 @@ import java.util.Properties;
 
 public class BaseClass {
     public static Properties prop;
-    public static WebDriver driver;
+    //public static WebDriver driver; ==> https://www.linkedin.com/pulse/selenium-parallel-testing-using-java-threadlocal-testng-shargo/
     public static Action action;
+
+    //Declare ThreadLocal Driver
+    public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        //Get driver from threadLocalMap
+        return driver.get();
+    }
 
     @BeforeTest
     public void loadConfig() {
@@ -45,17 +54,21 @@ public class BaseClass {
         String browserName = prop.getProperty("browser");
 
         if (browserName.contains("Chrome")) {
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+            //Set Browser to ThreadLocalMap
+            driver.set(new ChromeDriver());
         } else if (browserName.contains("FireFox")) {
-            driver = new FirefoxDriver();
+            //driver = new FirefoxDriver();
+            driver.set(new FirefoxDriver());
         } else if (browserName.contains("IE")) {
-            driver = new InternetExplorerDriver();
+            //driver = new InternetExplorerDriver();
+            driver.set(new InternetExplorerDriver());
         }
 
-        Action.impliciWait(driver, 10);
-        Action.pageLoadTimeOut(driver, 50);
-        driver.manage().window().maximize();
+        Action.impliciWait(getDriver(), 10);
+        Action.pageLoadTimeOut(getDriver(), 50);
+        getDriver().manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(1440, 900));
-        driver.get(prop.getProperty("url"));
+        getDriver().get(prop.getProperty("url"));
     }
 }
