@@ -27,7 +27,7 @@ public class AddToCartPage extends BaseClass {
     WebElement actualQuantity;
 
     public AddToCartPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public int checkActualQuantityAfterClick() {
@@ -45,7 +45,7 @@ public class AddToCartPage extends BaseClass {
     public void enterQuantity(int q) {
         for (int i=1; i<=q; i++) {
             try {
-                action.click(driver, plusButton);
+                action.click(getDriver(), plusButton);
             }
             catch (Exception e) {
                 System.out.println("(AddToCart) Out of stock !!");
@@ -54,20 +54,20 @@ public class AddToCartPage extends BaseClass {
     }
 
     public void clickOnAddToCart() {
-        action.click(driver, addToCart_Button);
+        action.click(getDriver(), addToCart_Button);
     }
 
     public CartPage clickonCart() {
-        action.click(driver, cart);
+        action.click(getDriver(), cart);
         return new CartPage();
     }
 
     public boolean validateAddToCart() {
-        return action.visibilityOf(driver, addedToCartText, 10);
+        return action.visibilityOf(getDriver(), addedToCartText, 10);
     }
 
     public boolean validateAddToCart2() {
-        action.fluentwait(driver, addedToCartText, 10);
-        return action.isDisplayed(driver, addedToCartText);
+        action.fluentwait(getDriver(), addedToCartText, 10);
+        return action.isDisplayed(getDriver(), addedToCartText);
     }
 }

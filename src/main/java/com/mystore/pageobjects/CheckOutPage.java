@@ -20,32 +20,32 @@ public class CheckOutPage extends BaseClass {
     WebElement capChaImage;
 
     public CheckOutPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
 
     }
 
     public void clickIAmNotRobot() throws InterruptedException {
-        driver.switchTo().frame(driver.findElement(By.xpath("*//iframe[@title='reCAPTCHA']")));
+        getDriver().switchTo().frame(getDriver().findElement(By.xpath("*//iframe[@title='reCAPTCHA']")));
         System.out.println("Test is display for iAmNotRobot");
         System.out.println("--------------------------------");
-        action.isDisplayed(driver, iAmNotRobot);
+        action.isDisplayed(getDriver(), iAmNotRobot);
         System.out.println("--------------------------------");
 
-        action.click(driver, iAmNotRobot);
+        action.click(getDriver(), iAmNotRobot);
         System.out.println("--------------------------------");
 
-        driver.switchTo().defaultContent();
-        if(action.isDisplayed(driver, capChaImage)) {
+        getDriver().switchTo().defaultContent();
+        if(action.isDisplayed(getDriver(), capChaImage)) {
             Thread.sleep(20000);
         }
     }
 
     public void clickNext() {
-        action.visibilityOf(driver, nextButton, 10);
-        action.click(driver, nextButton);
+        action.visibilityOf(getDriver(), nextButton, 10);
+        action.click(getDriver(), nextButton);
     }
     public boolean CheckisAGuestOrLogged() {
-        String title = driver.getCurrentUrl();
+        String title = getDriver().getCurrentUrl();
         return title.contains("sign-in");
     }
 }

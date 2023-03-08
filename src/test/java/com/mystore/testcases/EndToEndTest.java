@@ -56,11 +56,11 @@ public class EndToEndTest extends BaseClass {
         Thread.sleep(3000);
 
         //Confirmation when we move to method payment page
-        Assert.assertEquals(driver.getTitle(), "Paymark Web Payments", "Complete the END TO END Testing");
+        Assert.assertEquals(getDriver().getTitle(), "Paymark Web Payments", "Complete the END TO END Testing");
     }
 
     @AfterMethod
     public void teardown() {
-        driver.quit();
+        getDriver().quit();
     }
 }

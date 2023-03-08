@@ -21,15 +21,15 @@ public class SearchResultPage extends BaseClass {
     private WebElement firstProduct;
 
     public SearchResultPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public boolean isProductAvailable() {
-        return action.isDisplayed(driver, productResult);
+        return action.isDisplayed(getDriver(), productResult);
     }
 
     public AddToCartPage clickOnProduct() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body/main[@id='mainContent']/div[contains(@class,'container')]/div[contains(@class,'searchResultsPage-content')]/div[@id='myTabContent']/div[@id='productsTab']/div[contains(@class,'productListing')]/div[contains(@class,'row')]/div[contains(@class,'col-md-9 order-1 order-md-2')]/div[contains(@class,'product-list row')]/div[1]"))).click();
         Thread.sleep(10000);
         return new AddToCartPage();

@@ -26,13 +26,13 @@ public class LoginPage extends BaseClass {
     WebElement create_a_new_one;
 
     public LoginPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public <T> T Login(String user, String pass, Class<T> page) throws InstantiationException, IllegalAccessException, InterruptedException {
         action.type(username, user);
         action.type(password, pass);
-        action.click(driver, signInBtn);
+        action.click(getDriver(), signInBtn);
         return page.newInstance();
     }
 }

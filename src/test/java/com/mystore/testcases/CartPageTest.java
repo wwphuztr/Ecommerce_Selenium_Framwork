@@ -55,6 +55,6 @@ public class CartPageTest extends BaseClass {
 
     @AfterMethod
     public void teardown() {
-        driver.quit();
+        getDriver().quit();
     }
 }

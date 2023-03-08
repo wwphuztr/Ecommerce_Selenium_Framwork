@@ -29,31 +29,31 @@ public class IndexPage extends BaseClass {
     WebElement search_panel;
 
     public IndexPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public LoginPage clickOnSignIn() {
-        action.click(driver, x_button);
-        action.click(driver, signInBtn);
+        action.click(getDriver(), x_button);
+        action.click(getDriver(), signInBtn);
         return new LoginPage();
     }
 
     public boolean validateLogo() {
-        return action.isDisplayed(driver, myStoreLogo);
+        return action.isDisplayed(getDriver(), myStoreLogo);
     }
 
     public String getTitle() {
-            String myTitle = driver.getTitle();
+            String myTitle = getDriver().getTitle();
             return myTitle;
     }
 
     public SearchResultPage searchProduct(String productName) {
-        action.click(driver, x_button);
-        action.click(driver, search_panel);
+        action.click(getDriver(), x_button);
+        action.click(getDriver(), search_panel);
         action.type(searchProductBox, productName);
         //action.click(driver, resultButton);
-        action.enter(driver, searchProductBox);
-        Action.impliciWait(driver, 6);
+        action.enter(getDriver(), searchProductBox);
+        Action.impliciWait(getDriver(), 6);
 
         return new SearchResultPage();
     }

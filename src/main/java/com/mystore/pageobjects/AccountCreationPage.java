@@ -11,10 +11,10 @@ public class AccountCreationPage extends BaseClass {
     WebElement form_Title;
 
     public AccountCreationPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public boolean validate_Account_Create_Page() {
-        return action.isDisplayed(driver, form_Title);
+        return action.isDisplayed(getDriver(), form_Title);
     }
 }

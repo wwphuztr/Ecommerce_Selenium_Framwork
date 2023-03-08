@@ -31,6 +31,6 @@ public class LoginPageTest extends BaseClass {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        getDriver().quit();
     }
 }

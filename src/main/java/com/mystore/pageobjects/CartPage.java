@@ -22,19 +22,19 @@ public class CartPage extends BaseClass {
     WebElement checkoutButton;
 
     CartPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
 
     public CheckOutPage clickonCheckout() {
-        action.visibilityOf(driver, checkoutButton, 10);
+        action.visibilityOf(getDriver(), checkoutButton, 10);
         System.out.println("Test CHECK OUT button");
-        action.isDisplayed(driver, checkoutButton);
-        action.click(driver, checkoutButton);
+        action.isDisplayed(getDriver(), checkoutButton);
+        action.click(getDriver(), checkoutButton);
         return new CheckOutPage();
     }
     public double getUnitPrice() {
-        action.fluentwait(driver, unitPrice, 10);
+        action.fluentwait(getDriver(), unitPrice, 10);
         String uPrice1 = unitPrice.getText();
         String uPrice2 = uPrice1.replace("$", "");
         double finalUnitPrice = Double.parseDouble(uPrice2);
@@ -43,7 +43,7 @@ public class CartPage extends BaseClass {
     }
 
     public double getShippingPrice() {
-        action.fluentwait(driver, shippingPrice, 10);
+        action.fluentwait(getDriver(), shippingPrice, 10);
         String sPrice1 = shippingPrice.getText();
         String sPrice2 = sPrice1.replace("$", "");
         double finalShippingPrice = Double.parseDouble(sPrice2);
@@ -52,7 +52,7 @@ public class CartPage extends BaseClass {
     }
 
     public double getTotalPrice() {
-        action.fluentwait(driver, totalPrice, 10);
+        action.fluentwait(getDriver(), totalPrice, 10);
         String tPrice1 = totalPrice.getText();
         String tPrice2 = tPrice1.replace("$", "");
         double totalPrice = Double.parseDouble(tPrice2);

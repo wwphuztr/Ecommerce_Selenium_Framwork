@@ -16,10 +16,10 @@ public class HomePage extends BaseClass {
     WebElement icon_Profile;
 
     public HomePage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public String getCurrentURL() {
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 }
